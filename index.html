@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📸 Screenshot Tool</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📸 Taking Screenshots</h1>
+            <p class="subtitle">Simple, fast, and efficient screen capture tool</p>
+        </header>
+
+        <div class="controls">
+            <div class="button-group">
+                <button id="fullscreenBtn" class="btn btn-primary">
+                    <span>🖥️</span> Full Screen
+                </button>
+                <button id="areaBtn" class="btn btn-secondary">
+                    <span>✂️</span> Select Area
+                </button>
+                <button id="windowBtn" class="btn btn-info">
+                    <span>🪟</span> Capture Window
+                </button>
+                <button id="refreshBtn" class="btn btn-outline">
+                    <span>🔄</span> Refresh
+                </button>
+            </div>
+            
+            <div id="statusMessage" class="status-message"></div>
+        </div>
+
+        <div id="areaSelection" class="area-selection" style="display: none;">
+            <p>Click and drag to select area on screen</p>
+            <div id="areaPreview" class="area-preview">
+                <canvas id="selectionCanvas"></canvas>
+            </div>
+            <div class="area-controls">
+                <button id="captureAreaBtn" class="btn btn-success" disabled>
+                    📸 Capture Area
+                </button>
+                <button id="cancelAreaBtn" class="btn btn-danger">
+                    ❌ Cancel
+                </button>
+            </div>
+        </div>
+
+        <div id="windowSelection" class="window-selection" style="display: none;">
+            <h3>Select a window to capture:</h3>
+            <div id="windowList" class="window-list"></div>
+        </div>
+
+        <div id="previewContainer" class="preview-container" style="display: none;">
+            <h3>Preview</h3>
+            <img id="previewImage" src="" alt="Screenshot preview">
+            <div class="preview-controls">
+                <button id="downloadBtn" class="btn btn-success">
+                    💾 Download
+                </button>
+                <button id="saveBtn" class="btn btn-primary">
+                    💾 Save & Continue
+                </button>
+                <button id="clearBtn" class="btn btn-danger">
+                    🗑️ Clear
+                </button>
+            </div>
+            <p id="filenameDisplay" class="filename-display"></p>
+        </div>
+
+        <div id="screenshotGallery" class="gallery">
+            <h3>Recent Screenshots</h3>
+            <div id="galleryContent" class="gallery-content"></div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
